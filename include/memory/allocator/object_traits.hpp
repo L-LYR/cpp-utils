@@ -1,7 +1,7 @@
 #ifndef __CPP_UTILS_MEMORY_OBJECT_TRAITS__
 #define __CPP_UTILS_MEMORY_OBJECT_TRAITS__
 
-#include "traits/move.h"
+#include "traits/move.hpp"
 
 namespace cpp_utils {
 namespace memory {

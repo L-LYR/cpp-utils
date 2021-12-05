@@ -3,7 +3,7 @@
 
 namespace cpp_utils {
 namespace config {
-    
+
 using size_t = __SIZE_TYPE__;
 using ptrdiff_t = __PTRDIFF_TYPE__;
 

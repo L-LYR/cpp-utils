@@ -1,11 +1,18 @@
 #ifndef __CPP_UTILS_TRAITS_MOVE__
 #define __CPP_UTILS_TRAITS_MOVE__
 
-#include "traits/type.h"
+#include "traits/type_utils.hpp"
+
 namespace cpp_utils {
 namespace traits {
 
-// move forward an lvalue
+// move as an rvalue reference
+template <class T>
+constexpr auto move(T &&t) -> typename RemoveReference<T>::type && {
+  return static_cast<typename RemoveReference<T>::type &&>(t);
+}
+
+// move forward an lvalue as an rvalue reference
 template <typename T>
 constexpr auto forward(typename RemoveReference<T>::type &t) -> T && {
   return static_cast<T &&>(t);
@@ -21,4 +28,5 @@ constexpr auto forward(typename RemoveReference<T>::type &&t) -> T && {
 
 } // namespace traits
 } // namespace cpp_utils
+
 #endif
