@@ -1,9 +1,8 @@
 #ifndef __CPP_UTILS_MEMORY_POLICY__
 #define __CPP_UTILS_MEMORY_POLICY__
 
-#include <cstddef>
-#include <new>
-#include <tuple>
+#include "config/def.hpp"
+
 namespace cpp_utils {
 namespace memory {
 
@@ -22,8 +21,8 @@ public:
   using ConstPointer = const T *;
   using Reference = T &;
   using ConstReference = const T &;
-  using SizeType = std::size_t;
-  using DifferenceType = std::ptrdiff_t;
+  using SizeType = cpp_utils::config::size_t;
+  using DifferenceType = cpp_utils::config::ptrdiff_t;
 
 public:
   template <typename U> struct rebind { using other = StandardPolicy<U>; };

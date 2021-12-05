@@ -1,6 +1,5 @@
 #include "memory/allocator/allocator.hpp"
 #include <gtest/gtest.h>
-#include <new>
 
 struct StructForTestAllocator {
   char c;
@@ -64,12 +63,7 @@ TEST(basic_allocation, test_allocator) {
   }
 }
 
-TEST(rebind, test_allocator) {
-  {
-    List<int> list(10);
-    List<StructForTestAllocator> struct_list(100);
-  }
-}
+TEST(rebind, test_allocator) { List<int> list(10); }
 
 auto main(int argc, char **argv) -> int {
   testing::InitGoogleTest(&argc, argv);
