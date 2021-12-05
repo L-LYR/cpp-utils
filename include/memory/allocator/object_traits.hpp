@@ -1,7 +1,7 @@
 #ifndef __CPP_UTILS_MEMORY_OBJECT_TRAITS__
 #define __CPP_UTILS_MEMORY_OBJECT_TRAITS__
 
-#include <utility>
+#include "traits/move.h"
 
 namespace cpp_utils {
 namespace memory {
@@ -20,7 +20,7 @@ public:
 
   template <typename U, typename... Args>
   void construct_at(U *p, Args &&...args) {
-    ::new (p) U(std::forward<Args>(args)...);
+    ::new (p) U(cpp_utils::traits::forward<Args>(args)...);
   }
 
   void construct_at(T *p, const T &r) { ::new (p) T(r); }
