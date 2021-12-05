@@ -7,13 +7,13 @@ namespace traits {
 
 // move forward an lvalue
 template <typename T>
-constexpr T &&forward(typename RemoveReference<T>::type &t) {
+constexpr auto forward(typename RemoveReference<T>::type &t) -> T && {
   return static_cast<T &&>(t);
 };
 
 // move forward an rvalue
 template <typename T>
-constexpr T &&forward(typename RemoveReference<T>::type &&t) {
+constexpr auto forward(typename RemoveReference<T>::type &&t) -> T && {
   static_assert(!IsLvalueReference<T>::value,
                 "template argument T must be lvalue reference");
   return static_cast<T &&>(t);

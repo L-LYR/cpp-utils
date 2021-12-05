@@ -40,37 +40,37 @@ public:
 // memory can only be deallocated by the allocator with the same policy
 template <typename LT, typename LP, typename LO, typename RT, typename RP,
           typename RO>
-inline bool operator==(const Allocator<LT, LP, LO> &lhs,
-                       const Allocator<RT, RP, RO> &rhs) {
+inline auto operator==(const Allocator<LT, LP, LO> &lhs,
+                       const Allocator<RT, RP, RO> &rhs) -> bool {
   return operator==(dynamic_cast<const LP &>(lhs),
                     dynamic_cast<const RP &>(rhs));
 }
 template <typename LT, typename LP, typename LO, typename RT, typename RP,
           typename RO>
-inline bool operator!=(const Allocator<LT, LP, LO> &lhs,
-                       const Allocator<RT, RP, RO> &rhs) {
+inline auto operator!=(const Allocator<LT, LP, LO> &lhs,
+                       const Allocator<RT, RP, RO> &rhs) -> bool {
   return !operator==(lhs, rhs);
 }
 
 template <typename T, typename P, typename O, typename OtherAllocator>
-inline bool operator==(const Allocator<T, P, O> &lhs,
-                       const OtherAllocator &rhs) {
+inline auto operator==(const Allocator<T, P, O> &lhs, const OtherAllocator &rhs)
+    -> bool {
   return operator==(dynamic_cast<P &>(lhs), rhs);
 }
 template <typename T, typename P, typename O, typename OtherAllocator>
-inline bool operator!=(const Allocator<T, P, O> &lhs,
-                       const OtherAllocator &rhs) {
+inline auto operator!=(const Allocator<T, P, O> &lhs, const OtherAllocator &rhs)
+    -> bool {
   return !operator==(lhs, rhs);
 }
 
 template <typename T, typename P, typename O>
-inline bool operator==(const Allocator<T, P, O> &lhs,
-                       const Allocator<T, P, O> &rhs) {
+inline auto operator==(const Allocator<T, P, O> &lhs,
+                       const Allocator<T, P, O> &rhs) -> bool {
   return operator==(dynamic_cast<const P &>(lhs), dynamic_cast<const P &>(rhs));
 }
 template <typename T, typename P, typename O>
-inline bool operator!=(const Allocator<T, P, O> &lhs,
-                       const Allocator<T, P, O> &rhs) {
+inline auto operator!=(const Allocator<T, P, O> &lhs,
+                       const Allocator<T, P, O> &rhs) -> bool {
   return !operator==(lhs, rhs);
 }
 

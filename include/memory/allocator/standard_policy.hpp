@@ -34,21 +34,22 @@ public:
   template <typename U> StandardPolicy(const StandardPolicy<U> &) {}
 
   // standard allocation
-  Pointer allocate(SizeType n) {
+  auto allocate(SizeType n) -> Pointer {
     return reinterpret_cast<Pointer>(::operator new(n * sizeof(ValueType)));
   }
   // standard deallocation
-  void deallocate(Pointer p, SizeType n) { ::operator delete(p); }
+  auto deallocate(Pointer p, SizeType n) { ::operator delete(p); }
 };
 
 // memory can only be deallocated by the allocator with the same policy
 template <typename T, typename U>
-inline bool operator==(const StandardPolicy<T> &, const StandardPolicy<U> &) {
+inline auto operator==(const StandardPolicy<T> &, const StandardPolicy<U> &)
+    -> bool {
   return true;
 }
 
 template <typename T, typename OtherPolicy>
-inline bool operator==(const StandardPolicy<T> &, const OtherPolicy &) {
+inline auto operator==(const StandardPolicy<T> &, const OtherPolicy &) -> bool {
   return false;
 }
 
