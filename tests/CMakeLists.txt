@@ -1,6 +1,6 @@
 project(unitest)
 
-include(GoogleTest)
+find_package(GTest CONFIG REQUIRED)
 
 file(GLOB_RECURSE UNIT_TESTS *.cpp)
 
@@ -8,7 +8,7 @@ foreach(T ${UNIT_TESTS})
     get_filename_component(TEST_NAME ${T} NAME_WE)
     message("Build unit test ${TEST_NAME}")
     add_executable(${TEST_NAME} ${T})
-    target_link_libraries(${TEST_NAME} gtest gtest_main cpp_utils)
+    target_link_libraries(${TEST_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main cpp_utils)
 endforeach(T)
 
 # add memcheck for special test

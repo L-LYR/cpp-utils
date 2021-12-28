@@ -3,6 +3,7 @@
 
 # build
 build
+.vcpkg
 
 # compile
 compile_commands.json
