@@ -7,8 +7,9 @@ namespace cpp_utils {
 namespace traits {
 
 // Bool Constant
-using TypedTrue = TypedConstant<bool, true>;
-using TypedFalse = TypedConstant<bool, false>;
+template <bool V> using TypedBoolConstant = TypedConstant<bool, V>;
+using TypedTrue = TypedBoolConstant<true>;
+using TypedFalse = TypedBoolConstant<false>;
 
 // Logical Operator
 template <bool Condition, typename TrueBranch, typename FalseBranch>
@@ -50,8 +51,7 @@ struct AND<B1, B2, B3, Bn...> // more
     : public IF<B1::value, AND<B2, B3, Bn...>, B1>::Result {};
 
 // NOT
-template <typename B>
-struct NOT : public TypedConstant<bool, !bool(B::value)> {};
+template <typename B> struct NOT : public TypedBoolConstant<!bool(B::value)> {};
 
 } // namespace traits
 } // namespace cpp_utils
