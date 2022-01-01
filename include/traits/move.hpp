@@ -2,7 +2,7 @@
 #define __CPP_UTILS_TRAITS_MOVE__
 
 #include "traits/is_lvalue_reference.hpp"
-#include "traits/type_traits.hpp"
+#include "traits/remove_reference.hpp"
 
 namespace cpp_utils {
 namespace traits {
