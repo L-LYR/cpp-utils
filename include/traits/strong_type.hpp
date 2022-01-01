@@ -1,8 +1,9 @@
 #ifndef __CPP_UTILS_TRAITS_STRONG__
 #define __CPP_UTILS_TRAITS_STRONG__
 
+#include "traits/is_reference.hpp"
 #include "traits/move.hpp"
-#include "traits/type_utils.hpp"
+#include "traits/type_traits.hpp"
 
 namespace cpp_utils {
 namespace traits {

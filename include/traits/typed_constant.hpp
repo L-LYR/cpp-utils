@@ -14,7 +14,7 @@ template <typename T, T v> struct TypedConstant {
   constexpr operator ValueType() const { return value; }
 };
 
-// void_t
+// void type
 template <typename...> using VoidType = void;
 
 } // namespace traits

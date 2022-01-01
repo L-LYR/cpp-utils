@@ -1,7 +1,8 @@
 #ifndef __CPP_UTILS_TRAITS_MOVE__
 #define __CPP_UTILS_TRAITS_MOVE__
 
-#include "traits/type_utils.hpp"
+#include "traits/is_lvalue_reference.hpp"
+#include "traits/type_traits.hpp"
 
 namespace cpp_utils {
 namespace traits {
