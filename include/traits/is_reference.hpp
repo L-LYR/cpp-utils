@@ -9,7 +9,7 @@ namespace cpp_utils {
 namespace traits {
 
 template <typename T>
-struct IsReference : OR<IsLvalueReference<T>, IsRvalueReference<T>>::Result {};
+struct IsReference : OR<IsLvalueReference<T>, IsRvalueReference<T>> {};
 
 template <typename T> struct IsNotReference : NOT<IsReference<T>> {};
 
