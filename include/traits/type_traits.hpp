@@ -16,14 +16,6 @@ template <typename T> struct RemoveReference<T &&> { using type = T; };
 
 // checker
 
-template <typename T> struct IsLvalueReference : TypedFalse {};
-template <typename T> struct IsLvalueReference<T &> : TypedTrue {};
-template <typename T> struct IsRvalueReference : TypedFalse {};
-template <typename T> struct IsRvalueReference<T &&> : TypedTrue {};
-template <typename T>
-struct IsReference : OR<IsLvalueReference<T>, IsRvalueReference<T>>::Result {};
-template <typename T> struct IsNotReference : NOT<IsReference<T>> {};
-
 template <typename T, typename = void>
 struct IsReferenceable : public TypedFalse {};
 template <typename T>
