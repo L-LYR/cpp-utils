@@ -1,6 +1,5 @@
 #include "traits/is_constructible.hpp"
 #include "gtest/gtest.h"
-#include <type_traits>
 
 struct UndefStruct;
 
@@ -36,6 +35,7 @@ TEST(test_is_constructible, basic_types) {
   static_assert(!IsConstructible<int &, float>::value, "!");
   static_assert(!IsConstructible<X, Y>::value, "!");
   static_assert(!IsConstructible<Y, X>::value, "!");
+  static_assert(!IsConstructible<char[4], char[]>::value, "!");
 }
 
 auto main(int argc, char **argv) -> int {

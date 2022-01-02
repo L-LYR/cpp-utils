@@ -1,7 +1,6 @@
 #include "traits/is_function.hpp"
 #include "traits/member_type_of.hpp"
 #include "gtest/gtest.h"
-#include <cstdio>
 
 TEST(test_is_function, basic_test) {
   using namespace cpp_utils::traits;
@@ -11,6 +10,9 @@ TEST(test_is_function, basic_test) {
 
   void echo();
   static_assert(IsFunction<decltype(echo)>::value, "!");
+
+  int variadic_func(int, int...);
+  static_assert(IsFunction<decltype(variadic_func)>::value, "!");
 
   struct TestStruct {
     int i;
