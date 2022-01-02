@@ -17,14 +17,16 @@ template <typename T> struct AddRvalueReferenceResult<T, true> {
 };
 
 template <typename T> struct AddRvalueReferenceImpl {
-  using Result = typename AddRvalueReferenceResult<
+  // NOTE: Here we cannot use IF, because IF need both results to be valid.
+  // For 'void' type, the result 'void &&' is invalid.
+  using type = typename AddRvalueReferenceResult<
       T, AND<IsNotVoid<T>, IsNotReference<T>>::value>::Result;
 };
 
 } // namespace details
 
 template <typename T> struct AddRvalueReference {
-  using type = typename details::AddRvalueReferenceImpl<T>::Result;
+  using type = typename details::AddRvalueReferenceImpl<T>::type;
 };
 
 } // namespace traits
